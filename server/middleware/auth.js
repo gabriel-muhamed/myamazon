@@ -34,3 +34,12 @@ const auth = (...rights) => async (req, res, next) => {
 module.exports = auth;
 
 //  auto import, bracket colorization, dotenvm es7+, eslint, flutter color, git lens, import cost, npm intellisensem path intellisensem vscode icons
+
+/* env 
+PORT=3001
+DB_PASS=LcePlEqclbVUOZlZ
+DB_USER=admin
+DB_HOST=cluster0.u2zycha.mongodb.net/myamazon
+DB_SCP=balthier12
+
+*/
