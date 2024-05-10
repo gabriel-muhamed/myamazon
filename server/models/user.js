@@ -46,7 +46,7 @@ const userSchema = mongoose.Schema({
         type: Array,
         default: []
     },
-    varified: {
+    verified: {
         type: Boolean,
         default: false
     }
@@ -70,9 +70,16 @@ userSchema.statics.emailTaken = async function (email) {
 
 userSchema.methods.generateAuthToken = function(){
     let user = this;
-    const userObj = { sub: user._id.toHexString() };
+    const userObj = { sub: user._id.toHexString(), email:user.email };
     const token = jwt.sign(userObj, process.env.DB_SCP, { expiresIn:'1d' });
     return token;
+}
+
+userSchema.methods.generateRegisterToken = function(){
+    let user = this;
+    const userObj = { sub: user._id.toHexString() };
+    const token = jwt.sign(userObj, process.env.DB_SCP, { expiresIn:'10h' });
+    return token
 }
 
 userSchema.methods.comparePassword = async function(candidatePassword){
